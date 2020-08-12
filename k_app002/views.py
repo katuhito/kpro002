@@ -34,10 +34,18 @@ class HelloView(TemplateView):
         # return render(request, 'k_app002/index.html', self.params)
 
     # プルダウンメニュー
-        ch = request.POST['choice']
-        self.params['result'] = 'selected: "' + ch + '".'
+        # ch = request.POST['choice']
+        # self.params['result'] = 'selected: "' + ch + '".'
+        # self.params['form'] = HelloForm(request.POST)
+        # return render(request, 'k_app002/index.html', self.params)
+
+    # マルチプルリスト
+        ch = request.POST.getlist('choice')
+        self.params['result'] = 'selected: ' + str(ch) + '.'
         self.params['form'] = HelloForm(request.POST)
         return render(request, 'k_app002/index.html', self.params)
+        
+
 
 
 

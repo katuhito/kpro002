@@ -14,5 +14,10 @@ class HelloForm(forms.Form):
         ('four', 'item 4'),
         ('five', 'item 5')
     ]
-    choice = forms.ChoiceField(label='radio', choices=data, widget=forms.Select(attrs={'size': 5}))
+
+    # 選択リスト
+    # choice = forms.ChoiceField(label='radio', choices=data, widget=forms.Select(attrs={'size': 5}))
+
+    # 複数項目の選択
+    choice = forms.MultipleChoiceField(label='radio', choices=data, widget=forms.SelectMultiple(attrs={'size': 6}))
     
