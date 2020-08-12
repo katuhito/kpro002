@@ -40,11 +40,22 @@ class HelloView(TemplateView):
         # return render(request, 'k_app002/index.html', self.params)
 
     # マルチプルリスト
+        # ch = request.POST.getlist('choice')
+        # self.params['result'] = 'selected: ' + str(ch) + '.'
+        # self.params['form'] = HelloForm(request.POST)
+        # return render(request, 'k_app002/index.html', self.params)
+
+    # リストの値を利用
         ch = request.POST.getlist('choice')
-        self.params['result'] = 'selected: ' + str(ch) + '.'
+        result = '<ol class="list-group"><b>selected:</b>'
+        for item in ch:
+            result += '<li class="list-group-item">' + item + '</li>'
+        result += '</ol>'
+        self.params['result'] = result
         self.params['form'] = HelloForm(request.POST)
         return render(request, 'k_app002/index.html', self.params)
-        
+
+
 
 
 
