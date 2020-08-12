@@ -27,11 +27,17 @@ class HelloView(TemplateView):
         # self.params['form'] = HelloForm(request.POST)
         # return render(request, 'k_app002/index.html', self.params)
 
-        chk = request.POST['check']
-        self.params['result'] = 'you selected: "' + chk + '".'
+    # 3択チェックボックス
+        # chk = request.POST['check']
+        # self.params['result'] = 'you selected: "' + chk + '".'
+        # self.params['form'] = HelloForm(request.POST)
+        # return render(request, 'k_app002/index.html', self.params)
+
+    # プルダウンメニュー
+        ch = request.POST['choice']
+        self.params['result'] = 'selected: "' + ch + '".'
         self.params['form'] = HelloForm(request.POST)
         return render(request, 'k_app002/index.html', self.params)
-        
 
 
 

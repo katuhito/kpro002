@@ -5,5 +5,12 @@ class HelloForm(forms.Form):
     # mail = forms.CharField(label='mail', widget=forms.TextInput(attrs={'class':'form-control'}))
     # age = forms.IntegerField(label='age', widget=forms.NumberInput(attrs={'class':'form-control'}))
     # check = forms.BooleanField(label='Checkbox', required=False)
-    check = forms.NullBooleanField(label='Check')
+    # check = forms.NullBooleanField(label='Check')
+
+    data = [
+        ('one', 'item 1'),
+        ('two', 'item 2'),
+        ('three', 'item 3')
+    ]
+    choice = forms.ChoiceField(label='Choice', choices=data)
     
