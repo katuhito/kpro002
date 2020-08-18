@@ -9,8 +9,11 @@
     </head>
     <body class="container">
         <h1 class="display-4 text-primary">{{title}}</h1>
-        <!-- <p class="h6 mt-4">{{data}}</p> -->
         <table class="table">
+            {{data|safe}}
+        </table>
+        <!-- <p class="h6 mt-4">{{data}}</p> -->
+        <!-- <table class="table">
             <tr>
                 <th>data</th>
             </tr>
@@ -21,7 +24,7 @@
                 </td>
             </tr>
         {% endfor %}
-        </table>
+        </table> -->
         <!-- <form action="{% url 'index' %}" method="post">
             {% csrf_token %}
             {{ form }}
