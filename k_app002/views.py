@@ -2,27 +2,54 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # from django.views.generic import TemplateView
 # from k_app002.form import HelloForm
+from k_app002.form import FriendForm
 from .models import Friend
-from django.db.models import QuerySet
+from django.shortcuts import redirect
+# from django.db.models import QuerySet
 
-def __new_str__(self):
-    result = ''
-    for item in self:
-        result += '<tr>'
-        for k in item:
-            result += '<td>' + str(k) + '=' + str(item[k]) + '</td>'
-        result += '</tr>'
-    return result
+# def __new_str__(self):
+#     result = ''
+#     for item in self:
+#         result += '<tr>'
+#         for k in item:
+#             result += '<td>' + str(k) + '=' + str(item[k]) + '</td>'
+#         result += '</tr>'
+#     return result
 
-QuerySet.__str__ = __new_str__
+# QuerySet.__str__ = __new_str__
 
 def index(request):   
-    data = Friend.objects.all().values('id', 'name', 'age')
+    data = Friend.objects.all()
     params = {
         'title': 'Hello',
         'data': data,
     }
     return render(request, 'k_app002/index.html', params)
+
+# create model
+def create(request):
+    if (request.method == 'POST'):
+        obj = Friend()
+        friend = FriendForm(request.POST, instance=obj)
+        friend.save()
+        return redirect(to='/k_app002')
+    params = {
+        'title': 'Hello',
+        'form': FriendForm(),
+    }
+    # if (request.method == 'POST'):
+    #     name = request.POST['name']
+    #     mail = request.POST['mail']
+    #     gender = 'gender' in request.POST
+    #     age = int(request.POST['age'])
+    #     birth = request.POST['birthday']
+    #     friend = Friend(name=name, mail=mail, gender=gender, age=age, birthday=birth)
+
+    #     friend.save()
+    #     return redirect(to='/k_app002')
+    return render(request, 'k_app002/create.html', params)
+    
+
 
 
 # def index(request):

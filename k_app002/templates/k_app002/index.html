@@ -10,8 +10,16 @@
     <body class="container">
         <h1 class="display-4 text-primary">{{title}}</h1>
         <table class="table">
-            {{data|safe}}
+            <tr>
+                <th>data</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{item}}</td>
+            </tr>
+            {% endfor %}
         </table>
+        
         <!-- <p class="h6 mt-4">{{data}}</p> -->
         <!-- <table class="table">
             <tr>
