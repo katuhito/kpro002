@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # from django.views.generic import TemplateView
-# from k_app002.form import HelloForm
-from k_app002.form import FriendForm
+# from .forms import HelloForm
+from .forms import FriendForm
 from .models import Friend
 from django.shortcuts import redirect
 # from django.db.models import QuerySet
 from django.views.generic import ListView
 from django.views.generic import DetailView
+
+
+
 
 class FriendList(ListView):
     model = Friend
@@ -81,6 +84,9 @@ def delete(request, num):
         'obj': friend,
     }
     return render(request, 'k_app002/delete.html', params)
+
+
+
 
 
 

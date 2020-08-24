@@ -12,7 +12,8 @@ urlpatterns = [
     path('delete/<int:num>', views.delete, name='delete'),
     path('list', FriendList.as_view()),
     path('detail/<int:pk>', FriendDetail.as_view()),
-    
+   
+
     
 
 
