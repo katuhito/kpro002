@@ -12,15 +12,6 @@ urlpatterns = [
     path('delete/<int:num>', views.delete, name='delete'),
     path('list', FriendList.as_view()),
     path('detail/<int:pk>', FriendDetail.as_view()),
-   
+    path('find', views.find, name='find'),
 
-    
-
-
-    # url(r'', HelloView.as_view(), name='index'),
-    
-    # path('', views.index, name='index'),
-    # path('<int:id>/<nickname>/', views.index, name='index'),
-    # path('next', views.next, name='next'),
-    # path('form', views.form, name='form'),
 ]

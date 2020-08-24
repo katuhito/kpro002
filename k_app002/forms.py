@@ -36,3 +36,6 @@ class HelloForm(forms.Form):
     # 複数項目の選択
     # choice = forms.MultipleChoiceField(label='radio', choices=data, widget=forms.SelectMultiple(attrs={'size': 6}))
     
+class FindForm(forms.Form):
+    find = forms.CharField(label='Find', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
