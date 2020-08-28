@@ -11,6 +11,7 @@ from django.views.generic import DetailView
 from .forms import FindForm
 from django.db.models import Q
 from django.db.models import Count,Sum,Avg,Min,Max
+from .forms import CheckForm
 
 
 
@@ -95,5 +96,22 @@ def find(request):
         'data': data,
     }
     return render(request, 'k_app002/find.html', params)
+
+def check(request):
+    params = {
+        'title': 'Hello',
+        'message': 'check validation.',
+        'form': CheckForm(),
+    }
+    if (request.method == 'POST'):
+        form = CheckForm(request.POST)
+        params['form'] = form
+        if (form.is_valid()):
+            params['message'] = 'OK!'
+        else:
+            params['message'] = 'no good.'
+    return render(request, 'k_app002/check.html', params)
+
+
 
 
