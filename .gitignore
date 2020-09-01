@@ -30,6 +30,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+#IDE metadata
+**.idea/**
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
