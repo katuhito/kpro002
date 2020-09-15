@@ -28,6 +28,13 @@ def index(request, page=1):
             glist.append(item)
         # Messageの取得
         messages = get_your_group_message(request.user, glist, page)
+        params = {
+            'login_user':request.user,
+            'contents':messages,
+            'check_form':checkform,
+            
+        }
+        return render(request, 'sns/index.html', params)
 
     # GETアクセス時の処理
     else:
@@ -75,6 +82,15 @@ def groups(request):
             # フォームの用意
             groupsform = GroupSelectForm(request.user, request.POST)
             friendsform = FriendsForm(request.user, friends=friends, vals=vlist)
+            createform = CreateGroupForm()
+            params = {
+                'login_user':request.user,
+                'groups_form':groupsform,
+                'friends_form':friendsform,
+                'create_form':createform,
+                'group':sel_group,
+            }
+            return render(request, 'sns/groups.html', params)
 
         # Friendsのチェック更新時の処理
         if request.POST['mode'] == '__friends_form__':
@@ -99,6 +115,15 @@ def groups(request):
             # フォームの用意
             groupsform = GroupSelectForm(request.user, {'groups':sel_group})
             friendsform = FriendsForm(request.user, friends=friends, vals=vlist)
+            createform = CreateGroupForm()
+            params = {
+                'login_user':request.user,
+                'groups_form':groupsform,
+                'friends_form':friendsform,
+                'create_form':createform,
+                'group':sel_group,
+            }
+            return render(request, 'sns/groups.html', params)
 
     # GETアクセス時の処理
     else:
